@@ -1,0 +1,1 @@
+puts 'Hello, JetRuby academy course!'
