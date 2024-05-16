@@ -1,5 +1,5 @@
 def обработка_слова(слово)
-	слово.to_s
+	слово.to_s if !слово.is_a?(String)
 	return '2^' + (слово.size).to_s + ' = ' + (2**слово.size).to_s if слово.end_with?('CS')
 	return слово.reverse
 end
