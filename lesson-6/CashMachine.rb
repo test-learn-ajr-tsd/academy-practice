@@ -11,13 +11,17 @@ class CashMachine
 	end
 
 	def увеличитьБаланс(сумма)
+		puts 'Сумма НЕ корректна!' unless сумма.is_a?(Float)
+		return @баланс unless сумма.is_a?(Float)
 		puts 'Сумма НЕ корректна!' unless сумма > 0
-		return @баланс unless сумма > 0
+		return @баланс unless сумма > 0 
 		@баланс += сумма	
 	end	
 	
 	def уменьшитьБаланс(сумма)
-		puts 'Сумма НЕ корректна' if сумма <= 0
+		puts 'Сумма НЕ корректна!' unless сумма.is_a?(Float)
+		return @баланс unless сумма.is_a?(Float)
+		puts 'Сумма НЕ корректна!' unless сумма > 0
 		puts 'Сумма больше текущего баланса' if сумма > @баланс
 		return @баланс unless сумма > 0 && сумма <= баланс
 		@баланс -= сумма

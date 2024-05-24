@@ -29,4 +29,16 @@ RSpec.describe 'Тест маршрутизаций' do
 	it 'Тест - /withdraw (с суммой больше баланса)' do		
 		expect(маршрутизацияДляCashMachine('/withdraw', {"value"=>"200"})).to eq 'Сумма не может быть больше вашего баланса!'
 	end	
+
+		it 'Тест - /withdraw (с отрицательной суммой)' do		
+		expect(маршрутизацияДляCashMachine('/withdraw', {"value"=>"-20"})).to eq 'Сумма не может быть <= 0!'
+	end	
+
+	it 'Тест - /withdraw (с суммой больше баланса и некоректное значение параметра)' do		
+		expect(маршрутизацияДляCashMachine('/withdraw', {"value"=>"й23ва54ап"})).to eq 'Сумма не может быть <= 0!'
+	end	
+
+	it 'Тест - /withdraw (с суммой больше баланса и некоректный параметр)' do		
+		expect(маршрутизацияДляCashMachine('/withdraw', {"asdf"=>"345ва54ап"})).to eq 'Параметр не корректно передан!'
+	end	
 end
