@@ -7,24 +7,20 @@ module FileWorker
 		end
 	end
 
-	def self.file_str_len(filename)
+	def self.count_strings(filename)
 		if File.exist?(filename)
-			rlines = File.readlines(filename)
-			return rlines.length
+			return File.readlines(filename).length			 
 		else
 			return '[Файл не найден!]'
 		end
 	end
 
 	def self.find(filename, id)
-		return '[Некоректный номер строки]' if id < 0 && id >= self.file_str_len(filename)
+		return '[Файл не найден!]' unless File.exist?(filename)
+		return '[Некоректный номер строки]' if id < 0 || id >= self.count_strings(filename)
 
-		if File.exist?(filename)
-			File.foreach(filename).with_index do |line, index|
-				return line.chomp if index == id
-			end			
-		else
-			return '[Файл не найден!]'
+		File.foreach(filename).with_index do |line, index|
+			return line.chomp if index == id
 		end
 	end
 
@@ -42,9 +38,8 @@ module FileWorker
 	end
 
 	def self.update(fname_source, fname_buffer, id, text)
-		return '[Некоректный номер строки]' if id < 0 && id >= self.file_str_len(filename)
-
 		return '[Файл не найден!]' if !File.exist?(fname_source)
+		return '[Некоректный номер строки]' if id < 0 || id >= self.count_strings(fname_source)
 		
 		fdest = File.open(fname_buffer, 'w')
 		File.foreach(fname_source).with_index do |line, index|
@@ -56,6 +51,7 @@ module FileWorker
 
 	def self.delete(fname_source, fname_buffer, id)
 		return '[Файл не найден!]' if !File.exist?(fname_source)
+		return '[Некоректный номер строки]' if id < 0 || id >= self.count_strings(fname_source)
 		
 		fdest = File.open(fname_buffer, 'w')
 		File.foreach(fname_source).with_index do |line, index|
