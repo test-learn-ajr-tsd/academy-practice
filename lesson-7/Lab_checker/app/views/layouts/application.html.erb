@@ -19,6 +19,15 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <span>Здравствуйте, <%= current_user.email %> (<%= current_user.id %>)</span>
+    <%= button_to 'Выйти', destroy_user_session_path, :method => :delete %>
+     <%= link_to 'Сменить пароль', edit_user_registration_path %>
+    <% else %>
+      <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
