@@ -1,9 +1,9 @@
-class LabReportsController < ApplicationController
+class LabReportsController < ApplicationController  
   before_action :set_lab_report, only: %i[ show edit update destroy ]
 
   # GET /lab_reports or /lab_reports.json
   def index
-    @lab_reports = LabReport.all
+    @lab_reports = LabReport.where(user_id: current_user.id)
   end
 
   # GET /lab_reports/1 or /lab_reports/1.json
@@ -65,6 +65,6 @@ class LabReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lab_report_params
-      params.require(:lab_report).permit(:user_id, :title, :description, :grade)
+      params.require(:lab_report).permit(:title, :description, :grade).merge(user: current_user)
     end
 end
