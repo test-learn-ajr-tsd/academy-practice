@@ -1,1 +1,40 @@
+test_file_toignore.txt
+lesson-4/balance.txt
+lesson-5/balance.txt
+lesson-6/balance.txt
+lesson-6/explanation.txt
+lesson-4/buffer.txt
+lesson-4/results.txt
+lesson-4/students.txt
+lesson-4/test_data.txt
+lesson-4/test_for_rewrite.txt
 
+# Ignore bundler config.
+lesson-7/Lab_checker/.bundle
+
+# Ignore all environment files (except templates).
+lesson-7/Lab_checker/.env*
+!lesson-7/Lab_checker/.env*.erb
+
+# Ignore all logfiles and tempfiles.
+lesson-7/Lab_checker/log/*
+lesson-7/Lab_checker/tmp/*
+!lesson-7/Lab_checker/log/.keep
+!lesson-7/Lab_checker/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+lesson-7/Lab_checker/tmp/pids/*
+!lesson-7/Lab_checker/tmp/pids/
+!lesson-7/Lab_checker/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+lesson-7/Lab_checker/storage/*
+!lesson-7/Lab_checker/storage/.keep
+lesson-7/Lab_checker/tmp/storage/*
+!lesson-7/Lab_checker/tmp/storage/
+!lesson-7/Lab_checker/tmp/storage/.keep
+
+lesson-7/Lab_checker/public/assets
+
+# Ignore master key for decrypting credentials and more.
+lesson-7/Lab_checker/config/master.key
